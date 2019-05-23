@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title>Tasker</title>
+    </head>
+    <body>
+        <h1 id="id_add_task_title">Add Task</h1>
+        <form method="POST" action="/tasks/add/">
+            <input id="id_task_title_inputbox" name="task_title" type="text" placeholder="Task name">
+            <button id="id_submit_task_button" type="submit">Submit</button>
+            {% csrf_token %}
+        </form>
+    </body>
+</html>

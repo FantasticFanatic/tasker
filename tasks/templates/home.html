@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Tasker</title>
+    </head>
+    <body>
+        <h1 id="id_my_tasks_title">My Tasks</h1>
+        <table id="id_task_table">
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a id="id_new_task_button" href="/tasks/add">New Task</a>
+    </body>
+</html>git

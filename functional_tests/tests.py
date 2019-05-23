@@ -29,7 +29,7 @@ class NewTasksTest(LiveServerTestCase):
         time.sleep(2) # Wait for the page to load.
 
         # The page is redirected to the add Task page
-        self.assertEquals(self.live_server_url + "/add", self.browser.current_url)
+        self.assertEquals(self.live_server_url + "/tasks/add/", self.browser.current_url)
         add_task_title = self.browser.find_element_by_id('id_add_task_title')
         self.assertEquals("Add Task", add_task_title.text)
 
@@ -51,15 +51,13 @@ class NewTasksTest(LiveServerTestCase):
         time.sleep(2)
 
         # Josh is redirected back to the list page
-        self.assertEquals(self.live_server_url, self.browser.current_url)
+        my_tasks_title = self.browser.find_element_by_id('id_my_tasks_title')
+        self.assertIsNotNone(my_tasks_title)
 
         # Josh checks if the list item is there.
         task_table = self.browser.find_element_by_id('id_task_table')
-        rows = task_table.find_elements_by_tag_name('tr')
-        self.assertTrue(
-            any(row.text == "Buy Groceries" for row in rows)
-        )
-
+        rows = task_table.find_elements_by_tag_name('td')
+        self.assertIn("Buy groceries", [row.text for row in rows])
         # Happy with everything josh logs off.
 
 

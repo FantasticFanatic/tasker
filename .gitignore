@@ -1,3 +1,5 @@
 .idea/
 __pycache__/*
 *.pyc
+geckodriver.log
+db.sqlite3
